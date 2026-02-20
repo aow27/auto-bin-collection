@@ -29,7 +29,8 @@ REMINDER_HOURS_BEFORE = 12  # Reminder the evening before
 def fetch_collections():
     response = requests.get(API_URL, timeout=10)
     response.raise_for_status()
-    return response.json()
+    data = response.json()
+    return data["value"] 
 
 
 def build_calendar(collections):
