@@ -23,7 +23,7 @@ SERVICE_LABELS = {
     "Garden":    "🌿 Garden waste collection",
 }
 
-REMINDER_HOURS_BEFORE = 12  # Reminder the evening before
+REMINDER_HOURS_BEFORE = 8  # Reminder the evening before
 
 
 def fetch_collections():
