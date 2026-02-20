@@ -1,0 +1,40 @@
+name: Update Bin Calendar
+
+on:
+  schedule:
+    - cron: '0 23 * * *'   # runs every day at 11pm UTC (midnight UK winter / 1am UK summer)
+  workflow_dispatch:         # allows you to trigger it manually from the Actions tab
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write        # needed to push the updated .ics to the repo
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Generate calendar
+        run: python sgc_bin_calendar.py
+        env:
+          SGC_UPRN: ${{ secrets.SGC_UPRN }}
+          # Only needed if you haven't set SGC_UPRN yet:
+          # SGC_HOUSE: ${{ secrets.SGC_HOUSE }}
+          # SGC_POSTCODE: ${{ secrets.SGC_POSTCODE }}
+
+      - name: Commit and push updated calendar
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/bin_collections.ics
+          git diff --cached --quiet || git commit -m "Update bin collection calendar [$(date -u +%Y-%m-%d)]"
+          git push
