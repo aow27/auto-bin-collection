@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bin Collection Calendar</title>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 60px auto; color: #333; }
+    code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; font-size: 0.95em; }
+    a { color: #0070ae; }
+  </style>
+</head>
+<body>
+  <h1>🗑️ Bin Collection Calendar</h1>
+  <p>This calendar is automatically updated daily with bin collection dates from South Gloucestershire Council.</p>
+  <h2>Subscribe</h2>
+  <p>Copy the URL below and add it as a <strong>subscribed calendar</strong> in your calendar app:</p>
+  <p><code id="url"></code></p>
+  <script>
+    const base = window.location.href.replace(/index\.html$/, '').replace(/\/$/, '');
+    document.getElementById('url').textContent = base + '/bin_collections.ics';
+  </script>
+  <h2>How to subscribe</h2>
+  <ul>
+    <li><strong>Google Calendar:</strong> Settings → Add other calendars → From URL → paste the URL above</li>
+    <li><strong>Apple Calendar:</strong> File → New Calendar Subscription → paste the URL above</li>
+    <li><strong>Outlook:</strong> Add calendar → Subscribe from web → paste the URL above</li>
+  </ul>
+  <p><small>Calendar updates automatically every night. Your app will pick up changes within a few hours.</small></p>
+</body>
+</html>
