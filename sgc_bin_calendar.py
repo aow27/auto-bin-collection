@@ -125,7 +125,7 @@ def build_ics(collections: list[dict]) -> str:
             "DESCRIPTION:Put your bin out by 7am.",
             "TRANSP:TRANSPARENT",
             "BEGIN:VALARM",
-            "TRIGGER:-PT720M",
+            "TRIGGER:-PT480M",
             "ACTION:DISPLAY",
             f"DESCRIPTION:Reminder: {label} collection tomorrow",
             "END:VALARM",
