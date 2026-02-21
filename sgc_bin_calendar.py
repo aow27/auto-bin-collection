@@ -91,7 +91,7 @@ def build_calendar(collections):
                 alarm = Alarm()
                 alarm.add("action", "DISPLAY")
                 alarm.add("description", f"Tomorrow: {label}")
-                alarm.add("trigger", timedelta(hours=-(24 - REMINDER_HOURS_BEFORE)))
+                alarm.add("trigger", timedelta(hours=-REMINDER_HOURS_BEFORE))
                 event.add_component(alarm)
 
                 cal.add_component(event)
