@@ -59,8 +59,8 @@ def build_calendar(collections):
         label = SERVICE_LABELS.get(service, f"🗑️ {service} collection")
 
         # Determine recurrence interval from schedule description
-        # e.g. "Monday every week" or "Monday every other week" or "Monday every 3 weeks"
-        if "every 3 weeks" in schedule.lower():
+        # e.g. "Monday every week" or "Monday every other week" or "Monday every 3rd week"
+        if "every 3" in schedule.lower():
             interval_days = 21
         elif "every other week" in schedule.lower():
             interval_days = 14
