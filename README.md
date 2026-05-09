@@ -41,7 +41,7 @@ Go to **Actions → Update Bin Calendar → Run workflow** to generate the initi
 ## How it works
 
 - Calls `https://api.southglos.gov.uk/wastecomp/GetCollectionDetails?uprn=YOUR_UPRN`
-- Reads the next collection date and schedule (weekly/fortnightly) for each service
+- Reads the next collection date and schedule (weekly/fortnightly/3-weekly) for each service
 - Projects dates 26 weeks forward
 - Writes a `.ics` file with a reminder alarm the evening before each collection
 - GitHub Actions runs this every night at 8pm UTC and commits any changes
